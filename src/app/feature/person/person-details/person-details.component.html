@@ -23,6 +23,7 @@
       <mat-form-field appearance="fill">
         <mat-label>First Name</mat-label>
         <input
+          required
           type="text"
           matInput
           name="firstName"
@@ -31,15 +32,29 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Last Name</mat-label>
-        <input type="text" matInput name="lastName" [(ngModel)]="vm.lastName" />
+        <input
+          required
+          type="text"
+          matInput
+          name="lastName"
+          [(ngModel)]="vm.lastName"
+        />
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
-        <input type="email" matInput name="email" [(ngModel)]="vm.email" />
+        <input
+          required
+          email
+          type="email"
+          matInput
+          name="email"
+          [(ngModel)]="vm.email"
+        />
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Phone Number</mat-label>
         <input
+          required
           type="tel"
           matInput
           name="phoneNumber"
@@ -49,8 +64,7 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Status</mat-label>
-        <mat-select name="status" [(ngModel)]="vm.status">
-          <mat-option value="">All</mat-option>
+        <mat-select required name="status" [(ngModel)]="vm.status">
           <mat-option value="Active">Active</mat-option>
           <mat-option value="Inactive">Inactive</mat-option>
         </mat-select>
