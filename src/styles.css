@@ -1,0 +1,21 @@
+/* Add application styles & imports to this file! */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100vh;
+  margin: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', sans-sersif;
+}
+
+[hidden] {
+  display: none !important;
+}

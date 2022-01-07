@@ -1,0 +1,73 @@
+<mat-expansion-panel
+  [expanded]="true"
+  class="search-expansion-panel"
+  *ngIf="vm$ | async as vm"
+>
+  <mat-expansion-panel-header>
+    <mat-panel-title> Search </mat-panel-title>
+  </mat-expansion-panel-header>
+  <form #searchForm="ngForm" autocomplete="off">
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input type="text" matInput name="firstName" [(ngModel)]="vm.firstName" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input type="text" matInput name="lastName" [(ngModel)]="vm.lastName" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput name="email" [(ngModel)]="vm.email" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Phone Number</mat-label>
+      <input
+        type="tel"
+        matInput
+        name="phoneNumber"
+        maxlength="10"
+        [(ngModel)]="vm.phoneNumber"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Status</mat-label>
+      <mat-select name="status" [(ngModel)]="vm.status">
+        <mat-option value="">All</mat-option>
+        <mat-option value="active">Active</mat-option>
+        <mat-option value="inactive">Inactive</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  <mat-action-row>
+    <button type="submit" mat-raised-button color="primary" (click)="search()">
+      Search
+    </button>
+    <button type="reset" mat-raised-button (click)="reset()">Reset</button>
+  </mat-action-row>
+</mat-expansion-panel>
+<mat-expansion-panel [expanded]="true" class="table-expansion-panel">
+  <div class="mat-action-row">
+    <button
+      type="button"
+      mat-raised-button
+      color="primary"
+      [disabled]="!personGridComponent?.isRowSelected"
+      (click)="open()"
+    >
+      Open
+    </button>
+    <button type="button" mat-raised-button (click)="create()">New</button>
+    <button
+      type="button"
+      mat-raised-button
+      [disabled]="!personGridComponent?.isRowSelected"
+      (click)="delete()"
+    >
+      Delete
+    </button>
+  </div>
+  <app-person-grid
+    #appPersonGrid
+    [dataSource]="personGridData$ | async"
+  ></app-person-grid>
+</mat-expansion-panel>

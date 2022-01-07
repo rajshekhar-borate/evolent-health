@@ -1,0 +1,60 @@
+<form #detailsForm="ngForm" autocomplete="off">
+  <div class="top-action-row">
+    <button
+      type="button"
+      mat-raised-button
+      color="primary"
+      [disabled]="detailsForm.invalid || detailsForm.pristine"
+      (click)="save()"
+    >
+      Save
+    </button>
+    <button type="button" mat-raised-button (click)="cancel()">Cancel</button>
+  </div>
+  <mat-expansion-panel
+    [expanded]="true"
+    class="search-expansion-panel"
+    *ngIf="vm$ | async as vm"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title> Person Details </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="expansion-panel-body">
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input
+          type="text"
+          matInput
+          name="firstName"
+          [(ngModel)]="vm.firstName"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input type="text" matInput name="lastName" [(ngModel)]="vm.lastName" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput name="email" [(ngModel)]="vm.email" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Phone Number</mat-label>
+        <input
+          type="tel"
+          matInput
+          name="phoneNumber"
+          maxlength="10"
+          [(ngModel)]="vm.phoneNumber"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select name="status" [(ngModel)]="vm.status">
+          <mat-option value="">All</mat-option>
+          <mat-option value="Active">Active</mat-option>
+          <mat-option value="Inactive">Inactive</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </mat-expansion-panel>
+</form>
