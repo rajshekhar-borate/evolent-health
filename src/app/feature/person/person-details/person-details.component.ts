@@ -11,7 +11,7 @@ import { PersonDetailsService } from './person-details.service';
 @Component({
   selector: 'app-person-details',
   templateUrl: './person-details.component.html',
-  styleUrls: ['./person-details.component.css'],
+  styleUrls: ['./person-details.component.scss'],
 })
 export class PersonDetailsComponent implements OnInit {
   vm: Person;
