@@ -36,7 +36,9 @@ export class PersonLookupComponent implements OnInit {
 
   loadGridData() {
     if (this.localCacheService.pageMode !== PageMode.update) {
-      this.personGridData$ = this.localCacheService.personLookupGridState$;
+      this.personGridData$ = this.localCacheService.personLookupGridState$.pipe(
+        tap(console.log)
+      );
       return;
     }
 
@@ -90,5 +92,13 @@ export class PersonLookupComponent implements OnInit {
         this.personGridComponent.clearAllRowsSelection();
         PERSONS.splice(PERSONS.indexOf(selectedRow), 1);
       });
+  }
+
+  ngOnDestroy() {
+    this.localCacheService.personLookupSearchVMState = this.searchForm.value;
+    this.localCacheService.personLookupGridState =
+      this.personGridComponent.getData();
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

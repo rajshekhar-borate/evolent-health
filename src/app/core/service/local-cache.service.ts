@@ -14,7 +14,7 @@ export class LocalCacheService {
   public readonly PageMode$: Observable<PageMode> =
     this._pageMode$.asObservable();
 
-  get PageMode() {
+  get pageMode() {
     return this._pageMode;
   }
 

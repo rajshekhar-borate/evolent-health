@@ -13,7 +13,7 @@
   </div>
   <mat-expansion-panel
     [expanded]="true"
-    class="search-expansion-panel"
+    class="details-expansion-panel"
     *ngIf="vm$ | async as vm"
   >
     <mat-expansion-panel-header>
@@ -59,6 +59,8 @@
           matInput
           name="phoneNumber"
           maxlength="10"
+          minlength="10"
+          [pattern]="phoneNumberPattern"
           [(ngModel)]="vm.phoneNumber"
         />
       </mat-form-field>
